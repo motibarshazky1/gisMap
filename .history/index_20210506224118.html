@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+		<style>
+			#map {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="map"></div>
+		<div id="side-bar" class="col-md-3">
+			<button></button>
+		</div>
+		<script>
+			var map = L.map('map', { maxZoom: 20, minZoom: 8, zoomControl: false }).setView([32, 34], 1);
+
+			L.tileLayer(
+				'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=p1CBzwVQr6t9kUuicOcv',
+				{
+					attribution:
+						'<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+				}
+			).addTo(map);
+
+			//get your location
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function (position) {
+					var positionInfo =
+						'Your current position is (' +
+						'Latitude: ' +
+						position.coords.latitude +
+						', ' +
+						'Longitude: ' +
+						position.coords.longitude +
+						')';
+					var myPlace = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
+					myPlace.bindPopup('I AM HERE');
+					myPlace.on('mouseover', function (e) {
+						this.openPopup();
+					});
+					myPlace.on('mouseout', function (e) {
+						this.closePopup();
+					});
+				});
+			} else {
+				alert('Sorry, your browser does not support HTML5 geolocation.');
+			}
+
+			//places
+			var place = L.marker([31.5054773720722835, 34.757192234703254])
+				.bindTooltip(' ירושלים בית סוהר', {
+					permanent: true,
+					direction: 'bottom',
+				})
+				.addTo(map);
+			place.bindPopup('Popup content');
+			place.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			place.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			var place2 = L.marker([31.054773720722835, 34.757192234703254]).addTo(map);
+			place2.bindPopup('P2opup2 2content2');
+			place2.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			place2.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			map.on('overlayadd', function (e) {
+				alert(e.name + 'on');
+			});
+			map.on('overlayremove', function (e) {
+				alert(e.name + 'off');
+			});
+
+			var baseLayers = {
+				place2: place2,
+			};
+
+			var overlays = {
+				place: place,
+			};
+
+			L.control.layers(baseLayers, overlays).addTo(map);
+		</script>
+	</body>
+</html>

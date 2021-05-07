@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
+		/>
+		<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+		<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+		<style>
+			#map {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="map"></div>
+		<div id="sidebar" class="col-md-3"></div>
+		<script>
+			var map = L.map('map', { maxZoom: 20, minZoom: 8, zoomControl: false }).setView([32, 34], 1);
+			var myLocation;
+			var isRouting = false;
+			L.tileLayer(
+				'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=p1CBzwVQr6t9kUuicOcv',
+				{
+					attribution:
+						'<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+				}
+			).addTo(map);
+
+			//get your location
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function (position) {
+					var positionInfo =
+						'Your current position is (' +
+						'Latitude: ' +
+						position.coords.latitude +
+						', ' +
+						'Longitude: ' +
+						position.coords.longitude +
+						')';
+					var myPlace = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
+					myLocation = [position.coords.latitude, position.coords.longitude];
+					myPlace.bindPopup('I AM HERE');
+					myPlace.on('mouseover', function (e) {
+						this.openPopup();
+					});
+					myPlace.on('mouseout', function (e) {
+						this.closePopup();
+					});
+				});
+			} else {
+				alert('Sorry, your browser does not support HTML5 geolocation.');
+			}
+
+			//places
+			// var place = L.marker([31.5054773720722835, 34.757192234703254])
+			// 	.bindTooltip(' ירושלים בית סוהר', {
+			// 		permanent: true,
+			// 		direction: 'bottom',
+			// 	})
+			// 	.addTo(map);
+			// place.bindPopup('Popup content');
+			// place.on('mouseover', function (e) {
+			// 	this.openPopup();
+			// });
+			// place.on('mouseout', function (e) {
+			// 	this.closePopup();
+			// });
+
+			// var place2 = L.marker([31.054773720722835, 34.757192234703254]).addTo(map);
+			// place2.bindPopup('P2opup2 2content2');
+			// place2.on('mouseover', function (e) {
+			// 	this.openPopup();
+			// });
+			// place2.on('mouseout', function (e) {
+			// 	this.closePopup();
+			// });
+
+			var place = L.marker([31.5054773720722835, 34.757192234703254])
+				.addTo(map)
+				.on('click', function () {
+					const route = L.Routing.control({
+						waypoints: [myLocation, L.latLng(31.5054773720722835, 34.757192234703254)],
+					});
+					route.addTo(map);
+					map.on('click', function (e) {
+						map.removeControl(route);
+					});
+				});
+			place.bindPopup('Popup content');
+			place.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			place.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			var place2 = L.marker([31.054773720722835, 34.757192234703254])
+				.addTo(map)
+				.on('click', function () {
+					const route = L.Routing.control({
+						waypoints: [myLocation, L.latLng(31.054773720722835, 34.757192234703254)],
+						addWaypoints: false,
+					});
+					route.addTo(map);
+					map.on('click', function (e) {
+						map.removeControl(route);
+					});
+				});
+			place2.bindPopup('P2opup2 2content2');
+			place2.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			place2.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			var cities = L.layerGroup([place, place2]);
+			var baseLayers = {};
+
+			var overlays = {
+				Cities: cities,
+			};
+
+			L.control.layers(baseLayers, overlays).addTo(map);
+		</script>
+	</body>
+</html>
