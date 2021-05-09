@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
@@ -10,6 +11,11 @@
 		/>
 		<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
 		<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+		<script src="index.js"></script>
+		<script
+			type="text/javascript"
+			src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"
+		></script>
 
 		<style>
 			#map {
@@ -23,7 +29,6 @@
 	</head>
 	<body>
 		<div id="map"></div>
-		<div id="sidebar" class="col-md-3"></div>
 		<script>
 			var map = L.map('map', { maxZoom: 20, minZoom: 8, zoomControl: false }).setView([32, 34], 1);
 			var myLocation;
@@ -76,20 +81,33 @@
 			// 	this.closePopup();
 			// });
 
-			// var place2 = L.marker([31.054773720722835, 34.757192234703254]).addTo(map);
-			// place2.bindPopup('P2opup2 2content2');
-			// place2.on('mouseover', function (e) {
-			// 	this.openPopup();
-			// });
-			// place2.on('mouseout', function (e) {
-			// 	this.closePopup();
-			// });
+			//prison icon
+			var prisonIcon = new L.Icon({
+				iconUrl: 'https://static.thenounproject.com/png/319293-200.png',
+				iconSize: [25, 41],
+				iconAnchor: [12, 41],
+				popupAnchor: [1, -34],
+			});
 
-			var place = L.marker([31.5054773720722835, 34.757192234703254])
+			//all prisons
+			var prisonsArray = [
+				{
+					name: 'בית סוהר גלבוע',
+					lat: 32.5468940785088,
+					long: 35.4185560021985,
+					arrive: 'דרכי הגעה: אבג כגגדלמכגמכ  יגכג. </br> ביקורים: ימי א',
+				},
+			];
+
+			var place = L.marker([prisonsArray[0].lat, prisonsArray[0].long], { icon: prisonIcon })
+				.bindTooltip(prisonsArray[0].name, {
+					permanent: true,
+					direction: 'bottom',
+				})
 				.addTo(map)
 				.on('click', function () {
 					const route = L.Routing.control({
-						waypoints: [myLocation, L.latLng(31.5054773720722835, 34.757192234703254)],
+						waypoints: [myLocation, L.latLng(prisonsArray[0].lat, prisonsArray[0].long)],
 					});
 					route.addTo(map);
 					alert('Click on the map to close your route!');
@@ -97,7 +115,7 @@
 						map.removeControl(route);
 					});
 				});
-			place.bindPopup('Popup content');
+			place.bindPopup(prisonsArray[0].arrive);
 			place.on('mouseover', function (e) {
 				this.openPopup();
 			});
@@ -105,7 +123,7 @@
 				this.closePopup();
 			});
 
-			var place2 = L.marker([31.054773720722835, 34.757192234703254])
+			var place2 = L.marker([31.054773720722835, 34.757192234703254], { icon: prisonIcon })
 				.addTo(map)
 				.on('click', function () {
 					const route = L.Routing.control({
