@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+		<link rel="stylesheet" href="./index.css" />
 		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
 		<link
@@ -66,27 +67,12 @@
 				alert('Sorry, your browser does not support HTML5 geolocation.');
 			}
 
-			//places
-			// var place = L.marker([31.5054773720722835, 34.757192234703254])
-			// 	.bindTooltip(' ירושלים בית סוהר', {
-			// 		permanent: true,
-			// 		direction: 'bottom',
-			// 	})
-			// 	.addTo(map);
-			// place.bindPopup('Popup content');
-			// place.on('mouseover', function (e) {
-			// 	this.openPopup();
-			// });
-			// place.on('mouseout', function (e) {
-			// 	this.closePopup();
-			// });
-
 			//prison icon
 			var prisonIcon = new L.Icon({
-				iconUrl: 'https://static.thenounproject.com/png/319293-200.png',
-				iconSize: [25, 41],
-				iconAnchor: [12, 41],
-				popupAnchor: [1, -34],
+				iconUrl: 'https://img.icons8.com/ios/452/handcuffs.png',
+				iconSize: [35, 35],
+				iconAnchor: [22, 41],
+				popupAnchor: [-400, 100],
 			});
 
 			//all prisons
@@ -95,14 +81,214 @@
 					name: 'בית סוהר גלבוע',
 					lat: 32.5468940785088,
 					long: 35.4185560021985,
-					arrive: 'דרכי הגעה: אבג כגגדלמכגמכ  יגכג. </br> ביקורים: ימי א',
+					arrive: `<div style="direction:rtl; text-align:right">
+							<b>דרכי הגעה:</b>
+							 יש להגיע אל עפולה דרך כביש 1,4, או 6, באמצעות הכבישים 65, 60. משם יש לנסוע מזרחה על כביש 71, עד שמגיעים לבית סוהר שיטה וגלבוע הממוקמים בצד הדרומי של הכביש. </br>
+							 <b>ביקורים:</b>
+							   לאסירים ביטחוניים: בימי א’, ב’,ג’,ה’. לאסירים פליליים: ביום ד’. מענה לקביעת ביקורים בטלפון: 04-6530907.</br>
+							  ימי הביקורים הרגילים הינם ימי חמישי וראשון בין השעות 12.00-09.00, ובין השעות 16.00-14.00 ויום שישי בין השעות 14.00-09.00. למפקד בית הסוהר הסמכות לקבוע ימי ביקורים נוספים באישור מפקד המחוז. שעות הביקור עשויות להשתנות בהתאם לבית הסוהר ולכן יש להתעדכן טלפונית טרם ההגעה למתקן הכליאה.</br>
+							  המבקר צריך להגיע למתקן בו שוהה האסיר כשבידו תעודה ממשלתית רשימת עם תמונה (רישיון נהיגה, תעודת זהות וכדומה). בכניסה למתקן הכליאה תערך על המבקר בדיקה ויבוצע חיפוש עליו ועל כליו. בזמן הביקור עצמו לא ניתן להכניס שום דבר. חפצים אישיים אפשרי להפקיד בתוך תאי האחסון המצויים באזור ההמתנה.</br>
+							  <img style="height:145px; width:145px" src="https://www.gov.il/BlobFolder/unit/unit_gilboa/he/%D7%92%D7%9C%D7%91%D7%95%D7%A2.jpg"></img>
+							  <span><img style="height:145px; width:145px" src="https://www.emeknews.co.il/wp-content/uploads/2016/06/Xatta137-1-848x636.jpg"></img></span>
+							  </div>`,
+				},
+				{
+					name: 'בית סוהר נפחא',
+					lat: 30.7266661031349,
+					long: 34.7735893752639,
+					arrive: `<div style="direction:rtl; text-align:right">
+							<b>דרכי הגעה:</b>
+							יש לנסוע דרומה על כביש 40 (ניתן לחבור אליו מכביש 6). לעבור את שדה בוקר ומדרשת בן גוריון. לפני ההגעה למצפה רמון יש פניה שמאלה עם שילוט לבית סוהר נפחא. אפשר להחנות במקום.</br>
+							 <b>ביקורים:</b>
+							 לאסירים ביטחוניים: בימים ב’,ד,’ה בין השעות 14.30-07.30. לאסירים פליליים: ביום ג’ בין השעות 14.30-07.30. מענה לקביעת ביקורים בטלפון: 08-6596027.</br>
+							 ימי הביקורים הרגילים הינם ימי חמישי וראשון בין השעות 12.00-09.00, ובין השעות 16.00-14.00 ויום שישי בין השעות 14.00-09.00. למפקד בית הסוהר הסמכות לקבוע ימי ביקורים נוספים באישור מפקד המחוז. שעות הביקור עשויות להשתנות בהתאם לבית הסוהר ולכן יש להתעדכן טלפונית טרם ההגעה למתקן הכליאה.</br>
+							 המבקר צריך להגיע למתקן בו שוהה האסיר כשבידו תעודה ממשלתית רשימת עם תמונה (רישיון נהיגה, תעודת זהות וכדומה). בכניסה למתקן הכליאה תערך על המבקר בדיקה ויבוצע חיפוש עליו ועל כליו. בזמן הביקור עצמו לא ניתן להכניס שום דבר. חפצים אישיים אפשרי להפקיד בתוך תאי האחסון המצויים באזור ההמתנה. במידה והמבקר רוצה לתת לאסיר ציוד כלשהו, עליו קודם כל לוודא במרכז המבקרים, עוד לפני הביקור, מהם החפצים שמותר ולהכניס לתת לאסיר. בזמן הביקור תהיה נוכחות של סוהר. כמו כן, אין לבוא בלבוש חשוף או בלתי הולם לביקורכמו כן, זכות קדימה בכניסה לחדר הביקורים תינתן לנכים (עם תעודת נכה), נשים בהריון או נשים עם תינוקות. 
+							הביקור אצל אסיר פלילי יתנהל למשך 30 דקות, מפקד הכלא או המנהל של האגף יכולים על פי שיקול דעתם לאשר את הארכת הביקור. ביקורי אסירי אגף משתלבים, אגף הפרדה או אגף שמור, ייערכו כאשר בין האסירים למבקרים חוצצת רשת או חלון זכוכית.</br>
+							 <img style="height:145px; width:145px" src="https://www.gov.il/BlobFolder/unit/unit_nafha/he/%D7%A0%D7%A4%D7%97%D7%90.jpg"></img>
+							 <span>
+								<img style="height:145px; width:145px" src="https://img.mako.co.il/2015/10/29/DSCF7012_c.jpg"></img>
+							</span>
+							</div>`,
+				},
+				{
+					name: 'בית מעצר ניצן',
+					lat: 31.9350423966722,
+					long: 34.8812712329071,
+					arrive: `<div style="direction:rtl; text-align:right">
+						בית הכלא ניצן נמצא בתוך מתחם בית סוהר איילון.</br>
+							<b>דרכי הגעה:</b>
+							ניתן להגיע לכלא נווה תרצה ברכב פרטי. מכביש 1 יש לרדת אל כביש 40, משם לעלות על כביש 434 ולנסוע בתוך רמלה עד לפניה ימינה לרחוב לוחמי בית”ר ומיד ימינה עד למגרש חניה, שם אפשר להחנות את הרכב וללכת ברגל עד לכניסה לבית הכלא. לבאים מדרום יש לנסוע על כביש 44 ולרדת אל כביש 434 עד לפניה שמאלה לרחוב לוחמי בית”ר. הבאים מצפון על כביש 6 יכולים לרדת לכביש 1 לכיוון תל אביב ולרדת אל כביש 434. הבאים מדרום מכביש 6 יכולים לרדת בכביש מספר 431. </br>
+							 <b>ביקורים:</b>
+							 ימי הביקורים הרגילים הינם ימי חמישי וראשון בין השעות 12.00-09.00, ובין השעות 16.00-14.00 ויום שישי בין השעות 14.00-09.00. למפקד בית הסוהר הסמכות לקבוע ימי ביקורים נוספים באישור מפקד המחוז. שעות הביקור עשויות להשתנות בהתאם לבית הסוהר ולכן יש להתעדכן טלפונית טרם ההגעה למתקן הכליאה.</br>
+							 כאמור, יש לוודא עם מרכז המבקרים של בית הסוהר טרם הביקור אילו חפצים ניתן להביא. ככלל ניתן להביא את החפצים הבאים בשעות הביקור: מכנסיים בצבע כהה, חולצה בצבע לבן, עד כ-6 זוגות של גרביים, עד כ-6 זוגות תחתונים, עד כ-3 מגבות, עד כ-6 גופיות, עד כ-2 פיג’מות, אימונית (טרנינג), מכנסי ספורט, שמיכה מצמר לאדם יחיד, ציפה המשמשת לשמיכת יחיד, עד כשני סדינים, שטיחון תפילה, טבעת נישואין, טלית ושאר תשמישי קדושה, מסמכים ותמונות, עד כ-4 ספרים לקריאה או ללימוד (על פי אישור קצין חינוך).</br>
+							כמו כן, עצור שהוגש נגדו כתב אישום זכאי לביקור אחת לשבוע למשך חצי שעה. עצור שטרם הוגש נגדו כתב אישום אינו זכאי לקבלת מבקרים אלא באישור הממונה על החקירה.</br>
+							  <img style="height:145px; width:145px" src="https://www.gov.il/BlobFolder/unit/unit_nitzan/he/%D7%9E%D7%92%D7%9F-%D7%A0%D7%99%D7%A6%D7%9F.jpg"></img>
+							  <span><img style="height:145px; width:145px" src="https://www.dok.co.il/wp-content/uploads/2019/09/israel_prison_752768376-2.jpg"></img></span>
+							  </div>`,
+				},
+				{
+					name: 'בית סוהר נווה תרצה',
+					lat: 31.9336550533684,
+					long: 34.8509330426847,
+					arrive: `<div style="direction:rtl; text-align:right;">
+							<b>דרכי הגעה:</b>
+							ניתן להגיע לכלא נווה תרצה ברכב פרטי. מכביש 1 יש לרדת אל כביש 40, משם לעלות על כביש 434 ולנסוע בתוך רמלה עד לפניה ימינה לרחוב לוחמי בית”ר ומיד ימינה עד למגרש חניה, שם אפשר להחנות את הרכב וללכת ברגל עד לכניסה לבית הכלא. לבאים מדרום יש לנסוע על כביש 44 ולרדת אל כביש 434 עד לפניה שמאלה לרחוב לוחמי בית”ר. הבאים מצפון על כביש 6 יכולים לרדת לכביש 1 לכיוון תל אביב ולרדת אל כביש 434. הבאים מדרום מכביש 6 יכולים לרדת בכביש מספר 431. </br>
+							 <b>ביקורים:</b>
+							 בימים ב’ בין השעות 12:45-15:00 וג’ בין השעות: 08:45-11:00. מענה לקביעת ביקורים בטלפון: 08-9776777.</br>
+							 ימי הביקורים הרגילים הינם ימי חמישי וראשון בין השעות 12.00-09.00, ובין השעות 16.00-14.00 ויום שישי בין השעות 14.00-09.00. למפקד בית הסוהר הסמכות לקבוע ימי ביקורים נוספים באישור מפקד המחוז. שעות הביקור עשויות להשתנות בהתאם לבית הסוהר ולכן יש להתעדכן טלפונית טרם ההגעה למתקן הכליאה.</br>
+							 במידה והאסיר לא נמצא בהפרדה מותר לו לקבל ביקור בתדירות של אחת לחודשיים. חשוב לדעת כי אסיר המצוי בהפרדה יכול לקבל כמות ביקורים בתדירות יותר גבוהה.
+							 במידה והמבקר מתפרע או מפר את הסדר, האחראי על הביקורים בכלא רשאי לשלול ממנו לשוב ולבקר בעתיד. כמו כן, ניסיון של מבקרים להבריח דבר כלשהו נחשב לעבירה פלילית.</br>
+
+							<img style="height:145px; width:145px" src="https://www.davar1.co.il/wp-content/uploads/2019/03/070319_jail.jpg"></img>
+							  <span><img style="height:145px; width:145px" src="https://www.gov.il/BlobFolder/unit/unit_neve-tirza/he/%D7%A0%D7%95%D7%95%D7%94%20%D7%AA%D7%A8%D7%A6%D7%942.jpg"></img></span>
+							  </div>`,
+				},
+				{
+					name: 'בית מעצר ירושלים',
+					lat: 31.78189166341,
+					long: 35.2221562733814,
+					arrive: `<div style="direction:rtl; text-align:right;">
+							<b>דרכי הגעה:</b>
+							אל בית מעצר ירושלים ניתן להגיע מהתחנה המרכזית שבעיר. יש לקחת את הקווים 18, 13, 6 או 20 עד התחנה שברחוב הנביאים, ומשם להמשיך ברגל עד למפגש הרחובות חשין ויפו. בימי שני בין השעות שמונה בבוקר לשתיים עשרה בצהריים מתקיימים בבית המעצר ביקורים סגורים, ואילו ביקורים פתוחים עבור אישורים חריגים ואסירי עבודה מתקיימים בימי חמישי, בין השעות שמונה בבוקר לשתיים עשרה בצהריים. יש לציין כי השעות והימים עשויים להשתנות בהתאם להחלטות מפקד בית המעצר בירושלים, ולכן יש לפנות תחילה אל מרכז ההזמנות ב- 08-9145839. מלבד זאת, ניתן לבצע בירורים בכל שעות היממה בטלפון שמספרו 08-9145811, ולהעביר מסמכים בפקס אל המספר 08-9193162. </br>
+							 <b>ביקורים:</b>
+							 ימי הביקורים הרגילים הינם ימי חמישי וראשון בין השעות 12.00-09.00, ובין השעות 16.00-14.00 ויום שישי בין השעות 14.00-09.00. למפקד בית הסוהר הסמכות לקבוע ימי ביקורים נוספים באישור מפקד המחוז. שעות הביקור עשויות להשתנות בהתאם לבית הסוהר ולכן יש להתעדכן טלפונית טרם ההגעה למתקן הכליאה.</br>
+							 אסירים פליליים שריצו 3 חודשים מתקופת מאסרם, זכאים לקבל מבקרים בכלא. קרובי משפחה ומכרים אחרים אשר רוצים לבקר את יקיריהם אך לא מצליחים לאתרו מוזמנים להתקשר למוקד לאיתור אסירים בטלפון 02-6225300. בשביל לתאם ביקור יש להתקשר למרכז המבקרים במתקן הכליאה של האסיר (בית סוהר או מעצר), ולבקש לתאם ביקור. במידה ורצון המבקר להעביר לידי האסיר חפצים אישיים, מומלץ שיברר קודם האם אפשרי לעשות זאת. עד קבלת האישור לביקור עשויים לעבור מספר ימים.</br>
+							 הביקור אצל אסיר פלילי יתנהל למשך 30 דקות, מפקד הכלא או המנהל של האגף יכולים על פי שיקול דעתם לאשר את הארכת הביקור. ביקורי אסירי אגף משתלבים, אגף הפרדה או אגף שמור, ייערכו כאשר בין האסירים למבקרים חוצצת רשת או חלון זכוכית.</br>
+
+							<img style="height:145px; width:145px" src="https://www.gov.il/BlobFolder/unit/unit_jerusalem1/he/%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D.jpg"></img>
+							  <span><img style="height:145px; width:145px" src="https://www.dok.co.il/wp-content/uploads/2019/09/jerusalem_prison_584178702.jpg"></img></span>
+							  </div>`,
+				},
+				{
+					name: 'בית סוהר אוהלי קידר',
+					lat: 31.2077156369368,
+					long: 34.8115388599057,
+					arrive: `<div style="direction:rtl; text-align:right;">
+							<b>דרכי הגעה:</b>
+							הגעה אל בית מעצר אוהלי קידר אפשרית ברכב פרטי ובאוטובוס, בעזרת קו 46 היוצא מהתחנה המרכזית שבבאר שבע. המעוניינים לבקר את יקיריהם מתבקשים לתאם זאת מראש בטלפון שמספרו 08-9776777 מאחר ששעות הביקור עשויות להשתנות. מוקד המידע פועל בימי ראשון עד שלישי בין תשע לארבע, ובימי רביעי בין תשע לשתיים עשרה. מענה בנושאים אחרים ניתן לקבל בכל שעות היממה בטלפון 08-6290800, וניתן לשלוח מסמכים אל מספר הפקס 08-9193040. </br>
+							 <b>ביקורים:</b>
+							 שעות וימי הביקור באוהלי קידר מחולקים בין אסירים פליליים וביטחוניים בצורה הבאה: בימים שני ורביעי ניתן לבקר אסירים ביטחוניים בין שבע וחצי בבוקר לשתיים עשרה בצהריים, ואילו בימים ראשון, חמישי ושישי ניתן לבקר אסירים פליליים באותן השעות.</br>
+							 ימי הביקורים הרגילים הינם ימי חמישי וראשון בין השעות 12.00-09.00, ובין השעות 16.00-14.00 ויום שישי בין השעות 14.00-09.00. למפקד בית הסוהר הסמכות לקבוע ימי ביקורים נוספים באישור מפקד המחוז. שעות הביקור עשויות להשתנות בהתאם לבית הסוהר ולכן יש להתעדכן טלפונית טרם ההגעה למתקן הכליאה.</br>
+							 המבקר צריך להגיע למתקן בו שוהה האסיר כשבידו תעודה ממשלתית רשימת עם תמונה (רישיון נהיגה, תעודת זהות וכדומה). בכניסה למתקן הכליאה תערך על המבקר בדיקה ויבוצע חיפוש עליו ועל כליו. בזמן הביקור עצמו לא ניתן להכניס שום דבר. חפצים אישיים אפשרי להפקיד בתוך תאי האחסון המצויים באזור ההמתנה. במידה והמבקר רוצה לתת לאסיר ציוד כלשהו, עליו קודם כל לוודא במרכז המבקרים, עוד לפני הביקור, מהם החפצים שמותר ולהכניס לתת לאסיר. בזמן הביקור תהיה נוכחות של סוהר. כמו כן, אין לבוא בלבוש חשוף או בלתי הולם לביקורכמו כן, זכות קדימה בכניסה לחדר הביקורים תינתן לנכים (עם תעודת נכה), נשים בהריון או נשים עם תינוקות.</br>
+							<img style="height:145px; width:145px" src="https://ynet-images1.yit.co.il/PicServer3/2014/03/03/5190233/15972394951386640360no.jpg"></img>
+							  <span><img style="height:145px; width:145px" src="https://www.gov.il/BlobFolder/unit/unit_ohali-keidar/he/%D7%90%D7%95%D7%94%D7%A7.jpg"></img></span>
+							  </div>`,
+				},
+				{
+					name: 'בית מעצר תל אביב אבו כביר',
+					lat: 32.0426384047155,
+					long: 34.7709420194142,
+					arrive: `<div style="direction:rtl; text-align:right;">
+							<b>דרכי הגעה:</b>
+							אל בית מעצר אבו כביר, השוכן כאמור ברחוב דרך בן צבי, ניתן להגיע באמצעות התחבורה הציבורית של חברת דן (קו 17) וחברת אגד (קו 173). שניהם יוצאים מהתחנה המרכזית של תל אביב. שעות הביקור במקום הן בימי ראשון בין שמונה בבוקר לארבע אחר הצהריים, ובימי שישי בין השעות שמונה לשתיים בצהריים. יחד עם זאת, מאחר ששעות הביקור עשויות להשתנות, רצוי להתקשר אל מרכז ההזמנות של השב”ס בימים רביעי ושלישי, וזאת בין השעות תשע לאחת עשרה בבוקר, ושתיים עד ארבע בצהריים. מספרו של המרכז הארצי הוא 08-9776777.</br>
+							 <b>ביקורים:</b>
+							 ימי הביקורים הרגילים הינם ימי חמישי וראשון בין השעות 12.00-09.00, ובין השעות 16.00-14.00 ויום שישי בין השעות 14.00-09.00. למפקד בית הסוהר הסמכות לקבוע ימי ביקורים נוספים באישור מפקד המחוז. שעות הביקור עשויות להשתנות בהתאם לבית הסוהר ולכן יש להתעדכן טלפונית טרם ההגעה למתקן הכליאה.</br>
+							 הביקור אצל אסיר פלילי יתנהל למשך 30 דקות, מפקד הכלא או המנהל של האגף יכולים על פי שיקול דעתם לאשר את הארכת הביקור. ביקורי אסירי אגף משתלבים, אגף הפרדה או אגף שמור, ייערכו כאשר בין האסירים למבקרים חוצצת רשת או חלון זכוכית.</br>
+							 המבקר צריך להגיע למתקן בו שוהה האסיר כשבידו תעודה ממשלתית רשימת עם תמונה (רישיון נהיגה, תעודת זהות וכדומה). בכניסה למתקן הכליאה תערך על המבקר בדיקה ויבוצע חיפוש עליו ועל כליו. בזמן הביקור עצמו לא ניתן להכניס שום דבר. חפצים אישיים אפשרי להפקיד בתוך תאי האחסון המצויים באזור ההמתנה. במידה והמבקר רוצה לתת לאסיר ציוד כלשהו, עליו קודם כל לוודא במרכז המבקרים, עוד לפני הביקור, מהם החפצים שמותר ולהכניס לתת לאסיר. בזמן הביקור תהיה נוכחות של סוהר. כמו כן, אין לבוא בלבוש חשוף או בלתי הולם לביקורכמו כן, זכות קדימה בכניסה לחדר הביקורים תינתן לנכים (עם תעודת נכה), נשים בהריון או נשים עם תינוקות.</br>
+							<img style="height:145px; width:145px" src="https://www.gov.il/BlobFolder/unit/unit_tel-aviv/he/%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91.jpg"></img>
+							  <span><img style="height:145px; width:145px" src="https://images1.calcalist.co.il/PicServer3/2016/09/03/634610/19_l.jpg"></img></span>
+							  </div>`,
+				},
+				{
+					name: 'בית כלא שקמה',
+					lat: 31.6654388821073,
+					long: 34.5981971157111,
+					arrive: `<div style="direction:rtl; text-align:right;">
+							<b>דרכי הגעה:</b>
+							בית כלא שקמה שוכן באזור התעשייה הצפוני של העיר אשקלון. ניתן להגיע אליו ברכב פרטי ובתחבורה הציבורית, כאשר חיפושים נערכים בכל הרכבים הפרטיים של מבקרים המגיעים למקום. המעוניינים להגיע בתחבורה הציבורית יכולים לעשות זאת עם קווי אגד היוצאים מהתחנה המרכזית של אשקלון, שמספריהם 10, 16, 4, 31, 27 ו- 19. יחד עם זאת, לפני שמגיעים אל בית הכלא מומלץ לתאם את הביקור בטלפון שמספרו 08-6775155 הפועל בכל שעות היממה. כמו כן, ניתן לשלוח מסמכים לפקס שמספרו 08-9193080.</br>
+							 <b>ביקורים:</b>
+							 שעות הביקור בבית כלא שקמה מתחלקות בהתאם לסיווגו ומקום מגוריו של האסיר, כאשר שפוטים מותר לבקר פעם אחת בשבועיים ואילו עצורים פעם בשבוע. בכל הימים (ראשון עד חמישי) שעות הביקור הן בין שמונה בבוקר לשלוש אחר הצהריים. בימי ראשון ניתן לבקר רק אסירים ביטחוניים שהינם תושבי רמאללה, מזרח ירושלים, יריחו וישראל, ובימי שני וחמישי ניתן לבקר רק אסירים המסווגים כאסירי הפרדה פליליים וכאסירי עבודה. בימי שלישי מותר לבקר אסירים ביטחוניים תושבי קלקיליה וטול כרם בלבד, ובימי רביעי רק את תושבי רצועת עזה.</br>
+							 ימי הביקורים הרגילים הינם ימי חמישי וראשון בין השעות 12.00-09.00, ובין השעות 16.00-14.00 ויום שישי בין השעות 14.00-09.00. למפקד בית הסוהר הסמכות לקבוע ימי ביקורים נוספים באישור מפקד המחוז. שעות הביקור עשויות להשתנות בהתאם לבית הסוהר ולכן יש להתעדכן טלפונית טרם ההגעה למתקן הכליאה.</br>
+							 כאמור, יש לוודא עם מרכז המבקרים של בית הסוהר טרם הביקור אילו חפצים ניתן להביא. ככלל ניתן להביא את החפצים הבאים בשעות הביקור: מכנסיים בצבע כהה, חולצה בצבע לבן, עד כ-6 זוגות של גרביים, עד כ-6 זוגות תחתונים, עד כ-3 מגבות, עד כ-6 גופיות, עד כ-2 פיג’מות, אימונית (טרנינג), מכנסי ספורט, שמיכה מצמר לאדם יחיד, ציפה המשמשת לשמיכת יחיד, עד כשני סדינים, שטיחון תפילה, טבעת נישואין, טלית ושאר תשמישי קדושה, מסמכים ותמונות, עד כ-4 ספרים לקריאה או ללימוד (על פי אישור קצין חינוך).</br>
+							<img style="height:145px; width:145px" src="https://www.gov.il/BlobFolder/unit/unit_shikma/he/%D7%A9%D7%A7%D7%9E%D7%94.jpg"></img>
+							  <span><img style="height:145px; width:145px" src="https://www.kan-ashkelon.co.il/wp-content/uploads/2017/07/%D7%9B%D7%9C%D7%90-%D7%A9%D7%A7%D7%9E%D7%94.-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%90%D7%99%D7%9C%D7%9F-%D7%90%D7%A1%D7%99%D7%99%D7%92.jpg"></img></span>
+							  </div>`,
+				},
+				{
+					name: 'בית סוהר מעשיהו',
+					lat: 31.9360846254195,
+					long: 34.8729395850114,
+					arrive: `<div style="direction:rtl; text-align:right;">
+							<b>דרכי הגעה:</b>
+							אל בית כלא מעשיהו ניתן להגיע באמצעות רכב פרטי ובתחבורה ציבורית. המעוניינים להגיע באוטובוס יכולים לקחת את קו אגד מספר 12 או קו 247 סופר-בוס שיוצאים מהתחנה המרכזית ברמלה. כמו כן, ניתן לעלות על קווים סדירים ועל מוניות שירות הן מהתחנה המרכזית, והן מתחנת הרכבת לוד/רמלה. שעות הביקור הן בין שמונה לשלוש וחצי בימי ראשון, ובין שמונה לאחת בימי שישי. בנוסף, בין השעות שמונה לאחת בימי חמישי מתאפשרים ביקורים מיוחדים. על מנת לזמן את הביקור יש להתקשר אל המרכז הארצי שמספרו 08-9776777, החל משמונה וחצי ועד שלוש בימי שני ושלישי. בנוסף, אפשר לברר פרטים אודות השוהים בבית הכלא מעשיהו ב- 08-9787555, או לשלוח פקס אל 08-9193240.</br>
+							 <b>ביקורים:</b>
+							 לצד שלילת החירות הקיימת בעונש מאסר מאחורי סורג ובריח, לאסירים מגיעים מגוון זכויות והטבות אחרות, כאשר המשמעותית ביותר בהן היא הזכות לקבל ביקורים. זכות זו נועדה לאפשר לאסיר לשמר את הקשר עם ידידיו ובני משפחתו, לכן השב”ס מתיר לבוא לבקרו, תחת הגבלות שונות. עו”ד אסף דוק מסביר מהם התנאים לקבלת ביקור בכלא, תחת אילו הגבלות זכות זו ניתנת, ומה הם התנאים לשלילתה.</br>
+							 ימי הביקורים הרגילים הינם ימי חמישי וראשון בין השעות 12.00-09.00, ובין השעות 16.00-14.00 ויום שישי בין השעות 14.00-09.00. למפקד בית הסוהר הסמכות לקבוע ימי ביקורים נוספים באישור מפקד המחוז. שעות הביקור עשויות להשתנות בהתאם לבית הסוהר ולכן יש להתעדכן טלפונית טרם ההגעה למתקן הכליאה.</br>
+							 במידה והאסיר לא נמצא בהפרדה מותר לו לקבל ביקור בתדירות של אחת לחודשיים. חשוב לדעת כי אסיר המצוי בהפרדה יכול לקבל כמות ביקורים בתדירות יותר גבוהה.
+							 כמו כן, עצור שהוגש נגדו כתב אישום זכאי לביקור אחת לשבוע למשך חצי שעה. עצור שטרם הוגש נגדו כתב אישום אינו זכאי לקבלת מבקרים אלא באישור הממונה על החקירה.</br>
+							<img style="height:145px; width:145px" src="https://ynet-images1.yit.co.il/PicServer5/2017/05/01/7751618/775161601000100980727no.jpg"></img>
+							  <span><img style="height:145px; width:145px" src="https://www.ynet.co.il/PicServer4/2014/04/17/5277883/4849902199488640360no.jpg"></img></span>
+							  </div>`,
+				},
+				{
+					name: 'בית כלא השרון',
+					lat: 32.2410599710341,
+					long: 34.8848808752261,
+					arrive: `<div style="direction:rtl; text-align:right;">
+							<b>דרכי הגעה:</b>
+							אם ברצונכם לבקר את יקירכם בבית כלא השרון תוכלו להגיע ברכב פרטי או באמצעות אוטובוסים ורכבת. על מנת להגיע באוטובוס יש לקחת את קו אגד 641 היוצא מתל אביב לנתניה או להיפך, או את קו 921 היוצא מתל אביב לחיפה או להיפך. כמו כן, ניתן לעלות על כל קו אוטובוס היוצא נתניה לכיוון תל אביב, ומתל אביב לכיוון נתניה, ולרדת בצומת הדרים. מעבר לכך, אפשר לנסוע בקווי רכבת ישראל העוברים בתחנת בית יהושוע, משם ממשיכים במונית.</br>
+							 <b>ביקורים:</b>
+							 שעות הביקור של אסירים פליליים בבית כלא השרון הן בין שמונה בבוקר לשלוש בצהריים בימי ראשון ורביעי, ובין שמונה בבוקר לאחת בימי שישי. אסירים ביטחוניים ניתן לבקר ביום שני בלבד בין שמונה לשלוש. יש לציין כי מותר לבקר אסירים רק פעם בשבועיים (לכל מבקר), להישמע לכל הוראות הסוהרים ולהימנע מהעברת המחאות או מזומנים לשוהים במקום.
+								על מנת לוודא ולתאם את ביקורכם התקשרו לטלפון 08-9776777 של מרכז הביקורים, וזאת בין שמונה ושלושים לשלוש ושלושים בימי שלישי בלבד. כמו כן, ניתן לקבל מענה אנושי לפניות ובירורים הנוגעים ליקירכם בכל שעות היממה במספר 09-8994201, ובמידה שהינכם נדרשים להעביר מסמכים ואישורים שונים, תוכלו לעשות זאת בפקס 08-9193440.</br>
+								אסירים פליליים שריצו 3 חודשים מתקופת מאסרם, זכאים לקבל מבקרים בכלא. קרובי משפחה ומכרים אחרים אשר רוצים לבקר את יקיריהם אך לא מצליחים לאתרו מוזמנים להתקשר למוקד לאיתור אסירים בטלפון 02-6225300. בשביל לתאם ביקור יש להתקשר למרכז המבקרים במתקן הכליאה של האסיר (בית סוהר או מעצר), ולבקש לתאם ביקור. במידה ורצון המבקר להעביר לידי האסיר חפצים אישיים, מומלץ שיברר קודם האם אפשרי לעשות זאת. עד קבלת האישור לביקור עשויים לעבור מספר ימים.</br>
+							<img style="height:145px; width:145px" src="https://www.gov.il/BlobFolder/unit/unit_hasharon/he/%D7%94%D7%A9%D7%A8%D7%95%D7%9F.jpg"></img>
+							  <span><img style="height:145px; width:145px" src="https://www.dok.co.il/wp-content/uploads/2019/09/hasharon_prison_954590596.jpg"></img></span>
+							  </div>`,
+				},
+				{
+					name: 'בית כלא אשל',
+					lat: 31.2070480800458,
+					long: 34.900727917579,
+					arrive: `<div style="direction:rtl; text-align:right;">
+							<b>דרכי הגעה:</b>
+							במידה שיקירכם שוהה בבית כלא אשל והינו אסיר פלילי, תוכלו לבקרו בין השעות שבע בבוקר לשתיים עשרה וחצי בימים ראשון, שישי ושלישי. מאידך, אסירים ביטחוניים ניתן לבקר החל משעה שבע וחצי בבוקר בימים שני ורביעי. למרות האמור לעיל, יש לתאם ולוודא את הביקור בעזרת המערכת הארצית שמספרה 08-9776777. זאת, ביום רביעי בין שמונה לשתיים עשרה, או בימים ראשון, שני ושלישי בין תשע לארבע אחר הצהריים. כמו כן, ניתן לקבל מענה לבירורים, שאלות ופניות בכל שעות היממה בטלפון 08-6290700, ולשלוח פקסים אל המספר 08-9193020.
+							כאמור, בית כלא אשל שוכן מדרום לבאר שבע, וניתן להגיע אליו בקו מיוחד שמספרו 46ו. הקו יוצא אל בית הכלא בכל יום מהתחנה המרכזית בבאר שבע בשעה 8:25 ולאחר מכן ב- 11. עם אותו הקו ניתן לחזור אל התחנה המרכזית בשעות 11:30 ו- 12:30.</br>
+							 <b>ביקורים:</b>
+							 ימי הביקורים הרגילים הינם ימי חמישי וראשון בין השעות 12.00-09.00, ובין השעות 16.00-14.00 ויום שישי בין השעות 14.00-09.00. למפקד בית הסוהר הסמכות לקבוע ימי ביקורים נוספים באישור מפקד המחוז. שעות הביקור עשויות להשתנות בהתאם לבית הסוהר ולכן יש להתעדכן טלפונית טרם ההגעה למתקן הכליאה.</br>
+							 במידה והאסיר לא נמצא בהפרדה מותר לו לקבל ביקור בתדירות של אחת לחודשיים. חשוב לדעת כי אסיר המצוי בהפרדה יכול לקבל כמות ביקורים בתדירות יותר גבוהה.
+							כמו כן, עצור שהוגש נגדו כתב אישום זכאי לביקור אחת לשבוע למשך חצי שעה. עצור שטרם הוגש נגדו כתב אישום אינו זכאי לקבלת מבקרים אלא באישור הממונה על החקירה.</br>
+							<img style="height:145px; width:145px" src="https://www.gov.il/BlobFolder/unit/unit_ashel/he/%D7%90%D7%A9%D7%9C.jpg"></img>
+							  <span><img style="height:145px; width:145px" src="https://www.dok.co.il/wp-content/uploads/2019/09/eshel_prison_842901969.jpg"></img></span>
+							  </div>`,
+				},
+				{
+					name: 'בית סוהר איילון',
+					lat: 31.9349440868197,
+					long: 34.879740113848,
+					arrive: `<div style="direction:rtl; text-align:right;">
+							<b>דרכי הגעה:</b>
+							אל בית כלא איילון ניתן להגיע מהתחנה המרכזית של רמלה באמצעות מוניות שירות או באוטובוסי אגד מספר 247 ו- 12. את הביקורים ניתן לערוך בימי ראשון בין השעות רבע לשמונה בבוקר ועד רבע לארבע אחר הצהריים, בימי שני בין השעות רבע לשמונה בבוקר ועד רבע לשתיים בצהריים, ובימי חמישי בין השעות רבע לשמונה בבוקר ועד שתיים וחצי בצהריים. יש לציין כי ניתן לבקר אסירים רק פעם אחת בשבועיים (לכל מבקר), ושעל המגיעים למקום ייערך חיפוש בגופם וכן בכלי הרכב הפרטי במידה שהגיעו עימו. מאחר ששעות וימי הביקור עשויים להשתנות מעת לעת, רצוי להתקשר תחילה אל מרכז ההזמנות למבקרים בטלפון שמספרו 08-9776777. אל המרכז הטלפוני ניתן להתקשר בימי שלישי ורביעי, בין השעות שמונה בבוקר לשתיים עשרה וחצי בצהריים, ובין השעות אחת לשלוש. </br>
+							 <b>ביקורים:</b>
+							 ימי הביקורים הרגילים הינם ימי חמישי וראשון בין השעות 12.00-09.00, ובין השעות 16.00-14.00 ויום שישי בין השעות 14.00-09.00. למפקד בית הסוהר הסמכות לקבוע ימי ביקורים נוספים באישור מפקד המחוז. שעות הביקור עשויות להשתנות בהתאם לבית הסוהר ולכן יש להתעדכן טלפונית טרם ההגעה למתקן הכליאה.</br>
+							 המבקר צריך להגיע למתקן בו שוהה האסיר כשבידו תעודה ממשלתית רשימת עם תמונה (רישיון נהיגה, תעודת זהות וכדומה). בכניסה למתקן הכליאה תערך על המבקר בדיקה ויבוצע חיפוש עליו ועל כליו. בזמן הביקור עצמו לא ניתן להכניס שום דבר. חפצים אישיים אפשרי להפקיד בתוך תאי האחסון המצויים באזור ההמתנה. במידה והמבקר רוצה לתת לאסיר ציוד כלשהו, עליו קודם כל לוודא במרכז המבקרים, עוד לפני הביקור, מהם החפצים שמותר ולהכניס לתת לאסיר. בזמן הביקור תהיה נוכחות של סוהר. כמו כן, אין לבוא בלבוש חשוף או בלתי הולם לביקורכמו כן, זכות קדימה בכניסה לחדר הביקורים תינתן לנכים (עם תעודת נכה), נשים בהריון או נשים עם תינוקות. 
+							הביקור אצל אסיר פלילי יתנהל למשך 30 דקות, מפקד הכלא או המנהל של האגף יכולים על פי שיקול דעתם לאשר את הארכת הביקור. ביקורי אסירי אגף משתלבים, אגף הפרדה או אגף שמור, ייערכו כאשר בין האסירים למבקרים חוצצת רשת או חלון זכוכית.</br>
+							<img style="height:145px; width:145px" src="https://www.gov.il/BlobFolder/unit/unit_ayalon/he/%D7%90%D7%99%D7%99%D7%9C%D7%95%D7%9F.jpg"></img>
+							  <span><img style="height:145px; width:145px" src="https://images.maariv.co.il/image/upload/f_auto,fl_lossy/c_fill,g_faces:center,h_912,w_1200/502323"></img></span>
+							  </div>`,
+				},
+				{
+					name: 'בית כלא אופק',
+					lat: 32.2418077202124,
+					long: 34.9860784175528,
+					arrive: `<div style="direction:rtl; text-align:right;">
+							<b>דרכי הגעה:</b>
+							בית הכלא שוכן ממערב לתל מונד וניתן להגיע אליו ברכב פרטי דרך כביש ארבע, בירידה של מחלף הדרים. לחילופין, ניתן להגיע גם באמצעות התחבורה הציבורית מנתניה (קו 641), מתל אביב ומחיפה (קו 921 ו- 861). בנוסף, אפשר להגיע ברכבת לבית כלא אופק מכל הכיוונים, כשצריך לרדת בתחנת בית יהושוע ולהמשיך במונית.</br>
+							 <b>ביקורים:</b>
+							 החל משנת 2001 פועל בית כלא אופק כיחידה עצמאית במתחם הדרים, ומסוגל לאכלס כ- 200 עצורים ושפוטים. מדובר באוכלוסיות שונות של בני נוער המחולקות למספר אגפים (אגפים 1-4 וכן אגף הפרדה). שעות הקבלה באגפים 2 ו- 4 הן בין השעות שמונה ועד אחת ביום ראשון, ובאגפים 1 ו- 3 גם כן בין שמונה לאחת אך ביום רביעי. באותן השעות מתקיימים גם הביקורים באגף ההפרדה, אך ביום שני.
+							על מנת להגיע לביקור שפוט או עצור חובה לתאם את ההגעה מראש, באמצעות המרכזייה שפועלת בימי שלישי בין תשע לשלוש במספר 08-9776777.
+							כמו כן, ניתן להתקשר אל תיאום הביקורים הכללי של השב”ס ב- 09-8994736, לקבל מענה לשאלות 24 שעות ביממה במספר 09-8994733, או לשלוח פקס למספר 08-9193520.</br>
+							המבקר צריך להגיע למתקן בו שוהה האסיר כשבידו תעודה ממשלתית רשימת עם תמונה (רישיון נהיגה, תעודת זהות וכדומה). בכניסה למתקן הכליאה תערך על המבקר בדיקה ויבוצע חיפוש עליו ועל כליו. בזמן הביקור עצמו לא ניתן להכניס שום דבר. חפצים אישיים אפשרי להפקיד בתוך תאי האחסון המצויים באזור ההמתנה. במידה והמבקר רוצה לתת לאסיר ציוד כלשהו, עליו קודם כל לוודא במרכז המבקרים, עוד לפני הביקור, מהם החפצים שמותר ולהכניס לתת לאסיר. בזמן הביקור תהיה נוכחות של סוהר. כמו כן, אין לבוא בלבוש חשוף או בלתי הולם לביקורכמו כן, זכות קדימה בכניסה לחדר הביקורים תינתן לנכים (עם תעודת נכה), נשים בהריון או נשים עם תינוקות.</br>
+							<img style="height:145px; width:145px" src="https://www.gov.il/BlobFolder/unit/unit_ayalon/he/%D7%90%D7%99%D7%99%D7%9C%D7%95%D7%9F.jpg"></img>
+							  <span><img style="height:145px; width:145px" src="https://images.maariv.co.il/image/upload/f_auto,fl_lossy/c_fill,g_faces:center,h_912,w_1200/502323"></img></span>
+							  </div>`,
 				},
 			];
 
-			var place = L.marker([prisonsArray[0].lat, prisonsArray[0].long], { icon: prisonIcon })
+			var gilboa = L.marker([prisonsArray[0].lat, prisonsArray[0].long], { icon: prisonIcon })
 				.bindTooltip(prisonsArray[0].name, {
 					permanent: true,
 					direction: 'bottom',
+					className: 'ToolTipProvince',
 				})
 				.addTo(map)
 				.on('click', function () {
@@ -115,39 +301,323 @@
 						map.removeControl(route);
 					});
 				});
-			place.bindPopup(prisonsArray[0].arrive);
-			place.on('mouseover', function (e) {
+			gilboa.bindPopup(prisonsArray[0].arrive);
+			gilboa.on('mouseover', function (e) {
 				this.openPopup();
 			});
-			place.on('mouseout', function (e) {
+			gilboa.on('mouseout', function (e) {
 				this.closePopup();
 			});
 
-			var place2 = L.marker([31.054773720722835, 34.757192234703254], { icon: prisonIcon })
+			var nafha = L.marker([prisonsArray[1].lat, prisonsArray[1].long], { icon: prisonIcon })
+				.bindTooltip(prisonsArray[1].name, {
+					permanent: true,
+					direction: 'bottom',
+					className: 'ToolTipProvince',
+				})
 				.addTo(map)
 				.on('click', function () {
 					const route = L.Routing.control({
-						waypoints: [myLocation, L.latLng(31.054773720722835, 34.757192234703254)],
-						addWaypoints: false,
+						waypoints: [myLocation, L.latLng(prisonsArray[1].lat, prisonsArray[1].long)],
 					});
 					route.addTo(map);
+					alert('Click on the map to close your route!');
 					map.on('click', function (e) {
 						map.removeControl(route);
 					});
 				});
-			place2.bindPopup('P2opup2 2content2');
-			place2.on('mouseover', function (e) {
+			nafha.bindPopup(prisonsArray[1].arrive);
+			nafha.on('mouseover', function (e) {
 				this.openPopup();
 			});
-			place2.on('mouseout', function (e) {
+			nafha.on('mouseout', function (e) {
 				this.closePopup();
 			});
 
-			var cities = L.layerGroup([place, place2]);
+			var nitzan = L.marker([prisonsArray[2].lat, prisonsArray[2].long], { icon: prisonIcon })
+				.bindTooltip(prisonsArray[2].name, {
+					permanent: true,
+					direction: 'right',
+					className: 'ToolTipProvince',
+				})
+				.addTo(map)
+				.on('click', function () {
+					const route = L.Routing.control({
+						waypoints: [myLocation, L.latLng(prisonsArray[2].lat, prisonsArray[2].long)],
+					});
+					route.addTo(map);
+					alert('Click on the map to close your route!');
+					map.on('click', function (e) {
+						map.removeControl(route);
+					});
+				});
+			nitzan.bindPopup(prisonsArray[2].arrive);
+			nitzan.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			nitzan.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			var tirza = L.marker([prisonsArray[3].lat, prisonsArray[3].long], { icon: prisonIcon })
+				.bindTooltip(prisonsArray[3].name, {
+					permanent: true,
+					direction: 'left',
+					className: 'ToolTipProvince',
+				})
+				.addTo(map)
+				.on('click', function () {
+					const route = L.Routing.control({
+						waypoints: [myLocation, L.latLng(prisonsArray[3].lat, prisonsArray[3].long)],
+					});
+					route.addTo(map);
+					alert('Click on the map to close your route!');
+					map.on('click', function (e) {
+						map.removeControl(route);
+					});
+				});
+			tirza.bindPopup(prisonsArray[3].arrive);
+			tirza.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			tirza.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			var jerusalem = L.marker([prisonsArray[4].lat, prisonsArray[4].long], { icon: prisonIcon })
+				.bindTooltip(prisonsArray[4].name, {
+					permanent: true,
+					direction: 'right',
+					className: 'ToolTipProvince',
+				})
+				.addTo(map)
+				.on('click', function () {
+					const route = L.Routing.control({
+						waypoints: [myLocation, L.latLng(prisonsArray[4].lat, prisonsArray[4].long)],
+					});
+					route.addTo(map);
+					alert('Click on the map to close your route!');
+					map.on('click', function (e) {
+						map.removeControl(route);
+					});
+				});
+			jerusalem.bindPopup(prisonsArray[4].arrive);
+			jerusalem.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			jerusalem.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			var keidar = L.marker([prisonsArray[5].lat, prisonsArray[5].long], { icon: prisonIcon })
+				.bindTooltip(prisonsArray[5].name, {
+					permanent: true,
+					direction: 'left',
+					className: 'ToolTipProvince',
+				})
+				.addTo(map)
+				.on('click', function () {
+					const route = L.Routing.control({
+						waypoints: [myLocation, L.latLng(prisonsArray[5].lat, prisonsArray[5].long)],
+					});
+					route.addTo(map);
+					alert('Click on the map to close your route!');
+					map.on('click', function (e) {
+						map.removeControl(route);
+					});
+				});
+			keidar.bindPopup(prisonsArray[5].arrive);
+			keidar.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			keidar.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			var kabir = L.marker([prisonsArray[6].lat, prisonsArray[6].long], { icon: prisonIcon })
+				.bindTooltip(prisonsArray[6].name, {
+					permanent: true,
+					direction: 'left',
+					className: 'ToolTipProvince',
+				})
+				.addTo(map)
+				.on('click', function () {
+					const route = L.Routing.control({
+						waypoints: [myLocation, L.latLng(prisonsArray[6].lat, prisonsArray[6].long)],
+					});
+					route.addTo(map);
+					alert('Click on the map to close your route!');
+					map.on('click', function (e) {
+						map.removeControl(route);
+					});
+				});
+			kabir.bindPopup(prisonsArray[6].arrive);
+			kabir.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			kabir.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			var shikma = L.marker([prisonsArray[7].lat, prisonsArray[7].long], { icon: prisonIcon })
+				.bindTooltip(prisonsArray[7].name, {
+					permanent: true,
+					direction: 'left',
+					className: 'ToolTipProvince',
+				})
+				.addTo(map)
+				.on('click', function () {
+					const route = L.Routing.control({
+						waypoints: [myLocation, L.latLng(prisonsArray[7].lat, prisonsArray[7].long)],
+					});
+					route.addTo(map);
+					alert('Click on the map to close your route!');
+					map.on('click', function (e) {
+						map.removeControl(route);
+					});
+				});
+			shikma.bindPopup(prisonsArray[7].arrive);
+			shikma.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			shikma.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			var maasiau = L.marker([prisonsArray[8].lat, prisonsArray[8].long], { icon: prisonIcon })
+				.bindTooltip(prisonsArray[8].name, {
+					permanent: true,
+					direction: 'left',
+					className: 'ToolTipProvince',
+				})
+				.addTo(map)
+				.on('click', function () {
+					const route = L.Routing.control({
+						waypoints: [myLocation, L.latLng(prisonsArray[8].lat, prisonsArray[8].long)],
+					});
+					route.addTo(map);
+					alert('Click on the map to close your route!');
+					map.on('click', function (e) {
+						map.removeControl(route);
+					});
+				});
+			maasiau.bindPopup(prisonsArray[8].arrive);
+			maasiau.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			maasiau.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			var hasharon = L.marker([prisonsArray[9].lat, prisonsArray[9].long], { icon: prisonIcon })
+				.bindTooltip(prisonsArray[9].name, {
+					permanent: true,
+					direction: 'left',
+					className: 'ToolTipProvince',
+				})
+				.addTo(map)
+				.on('click', function () {
+					const route = L.Routing.control({
+						waypoints: [myLocation, L.latLng(prisonsArray[9].lat, prisonsArray[9].long)],
+					});
+					route.addTo(map);
+					alert('Click on the map to close your route!');
+					map.on('click', function (e) {
+						map.removeControl(route);
+					});
+				});
+			hasharon.bindPopup(prisonsArray[9].arrive);
+			hasharon.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			hasharon.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			var eshel = L.marker([prisonsArray[10].lat, prisonsArray[10].long], { icon: prisonIcon })
+				.bindTooltip(prisonsArray[10].name, {
+					permanent: true,
+					direction: 'right',
+					className: 'ToolTipProvince',
+				})
+				.addTo(map)
+				.on('click', function () {
+					const route = L.Routing.control({
+						waypoints: [myLocation, L.latLng(prisonsArray[10].lat, prisonsArray[10].long)],
+					});
+					route.addTo(map);
+					alert('Click on the map to close your route!');
+					map.on('click', function (e) {
+						map.removeControl(route);
+					});
+				});
+			eshel.bindPopup(prisonsArray[10].arrive);
+			eshel.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			eshel.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			var ayalon = L.marker([prisonsArray[11].lat, prisonsArray[11].long], { icon: prisonIcon })
+				.bindTooltip(prisonsArray[11].name, {
+					permanent: true,
+					direction: 'left',
+					className: 'ToolTipProvince',
+				})
+				.addTo(map)
+				.on('click', function () {
+					const route = L.Routing.control({
+						waypoints: [myLocation, L.latLng(prisonsArray[11].lat, prisonsArray[11].long)],
+					});
+					route.addTo(map);
+					alert('Click on the map to close your route!');
+					map.on('click', function (e) {
+						map.removeControl(route);
+					});
+				});
+			ayalon.bindPopup(prisonsArray[11].arrive);
+			ayalon.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			ayalon.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			var ofek = L.marker([prisonsArray[12].lat, prisonsArray[12].long], { icon: prisonIcon })
+				.bindTooltip(prisonsArray[12].name, {
+					permanent: true,
+					direction: 'right',
+					className: 'ToolTipProvince',
+				})
+				.addTo(map)
+				.on('click', function () {
+					const route = L.Routing.control({
+						waypoints: [myLocation, L.latLng(prisonsArray[12].lat, prisonsArray[12].long)],
+					});
+					route.addTo(map);
+					alert('Click on the map to close your route!');
+					map.on('click', function (e) {
+						map.removeControl(route);
+					});
+				});
+			ofek.bindPopup(prisonsArray[12].arrive);
+			ofek.on('mouseover', function (e) {
+				this.openPopup();
+			});
+			ofek.on('mouseout', function (e) {
+				this.closePopup();
+			});
+
+			var בתי_סוהר = L.layerGroup([gilboa, nafha, tirza, keidar, maasiau, ayalon]);
+			var בתי_מעצר = L.layerGroup([nitzan, jerusalem, kabir]);
+			var בתי_כלא = L.layerGroup([shikma, hasharon, eshel, ofek]);
 			var baseLayers = {};
 
 			var overlays = {
-				Cities: cities,
+				בתי_סוהר: בתי_סוהר,
+				בתי_מעצר: בתי_מעצר,
+				בתי_כלא: בתי_כלא,
 			};
 
 			L.control.layers(baseLayers, overlays).addTo(map);

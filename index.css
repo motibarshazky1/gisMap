@@ -1,0 +1,8 @@
+.ToolTipProvince {
+	font-size: 9px;
+	font-weight: bold;
+	outline: none;
+}
+.leaflet-popup-tip-container {
+	display: none;
+}
